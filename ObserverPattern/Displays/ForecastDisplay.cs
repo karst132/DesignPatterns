@@ -7,36 +7,25 @@ using System.Threading.Tasks;
 
 namespace ObserverPattern.Displays
 {
-    internal class ForecastDisplay : Observer, DisplayElement
+    internal class ForecastDisplay : BaseObservingDisplay
     {
-        private float temperature;
-        private float humidity;
-        private Subject weatherData;
-        public ForecastDisplay(Subject weatherData) 
+        public ForecastDisplay(Subject weatherData) : base(weatherData)
         { 
-            this.weatherData = weatherData;
-            weatherData.RegisterObserver(this);
-        }
-        public void Update(float temperature, float humidity, float pressure)
-        {
-            this.temperature = temperature;
-            this.humidity = humidity;
-            Display();
         }
 
-        public void Display()
+        public override void Display()
         {
             string message = string.Empty;
 
-            if (humidity < 50 && temperature >= 20)
+            if (Humidity < 50 && Temperature >= 20)
             {
                 message = "Good weather is comming";
             }
-            else if (humidity >= 50 && temperature < 20)
+            else if (Humidity >= 50 && Temperature < 20)
             {
                 message = "Watch out for cooler, rainy weather. Take a umbrella with you";
             }
-            else if (humidity >= 50 && temperature >= 20)
+            else if (Humidity >= 50 && Temperature >= 20)
             {
                 message = "Watch out for hot, humid weather";
             }

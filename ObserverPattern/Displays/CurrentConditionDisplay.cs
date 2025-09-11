@@ -7,27 +7,15 @@ using System.Threading.Tasks;
 
 namespace ObserverPattern.Displays
 {
-    internal class CurrentConditionDisplay : Observer, DisplayElement
+    internal class CurrentConditionDisplay : BaseObservingDisplay
     {
-        private float temperature;
-        private float humidity;
-        private Subject weatherData;
-        public CurrentConditionDisplay(Subject weatherData) 
+        public CurrentConditionDisplay(Subject weatherData) : base(weatherData)
         { 
-            this.weatherData = weatherData;
-            weatherData.RegisterObserver(this);
         }
 
-        public void Update(float temperature, float humidity, float pressure)
+        public override void Display()
         {
-            this.temperature = temperature;
-            this.humidity = humidity;
-            Display();
-        }
-
-        public void Display()
-        {
-            Console.WriteLine($"The current temperature is {temperature} and the humidity is {humidity}");
+            Console.WriteLine($"The current temperature is {Temperature} and the humidity is {Humidity}");
         }
     }
 }

@@ -7,37 +7,29 @@ using System.Threading.Tasks;
 
 namespace ObserverPattern.Displays
 {
-    internal class StatisticsDisplay : Observer, DisplayElement
+    internal class StatisticsDisplay : BaseObservingDisplay
     {
-        private float temperature;
         private float sumTemperature = 0;
         private float maxTemp = 0;
         private float minTemp = 0;
         private int countUpdated = 0;
-        private Subject weatherData;
-        public StatisticsDisplay(Subject weatherData) 
-        { 
-            weatherData.RegisterObserver(this);
-            this.weatherData = weatherData;
-        }
-        public void Update(float temperature, float humidity, float pressure)
+
+        public StatisticsDisplay(Subject weatherData) : base(weatherData)
         {
-            this.temperature = temperature;
-            Display();
         }
 
-        public void Display()
+        public override void Display()
         {
             countUpdated++;
-            sumTemperature += temperature;
-            if (temperature > maxTemp || countUpdated == 1)
+            sumTemperature += Temperature;
+            if (Temperature > maxTemp || countUpdated == 1)
             {
-                maxTemp = temperature;
+                maxTemp = Temperature;
             }
 
-            if (temperature < minTemp || countUpdated == 1)
+            if (Temperature < minTemp || countUpdated == 1)
             {
-                minTemp = temperature;
+                minTemp = Temperature;
             }
 
             float averageTemrature = sumTemperature / countUpdated;

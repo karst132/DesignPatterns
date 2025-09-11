@@ -9,7 +9,7 @@ namespace ObserverPattern
         {
             WeatherData weatherData = new WeatherData();
 
-            IList<Observer> observers = new List<Observer>()
+            CustomList<Observer> observers = new CustomList<Observer>()
             {
                 new CurrentConditionDisplay(weatherData),
                 new StatisticsDisplay(weatherData),
@@ -25,11 +25,11 @@ namespace ObserverPattern
             weatherData.SetMeasurements(18, 47, 29.4f);
             Console.WriteLine();
 
-            Observer? observer = observers.ElementAtOrDefault(0);
-            if (observer != null)
+            if (observers.TryGet(0, out Observer? observer))
             {
-                weatherData.RemoveObserver(observer);
+                weatherData.RemoveObserver(observer!);
             }
+
             weatherData.SetMeasurements(25, 40, 29.2f);
         }
     }
