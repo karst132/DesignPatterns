@@ -23,6 +23,14 @@ namespace ObserverPattern
             weatherData.SetMeasurements(19, 51, 29.2f);
             Console.WriteLine();
             weatherData.SetMeasurements(18, 47, 29.4f);
+            Console.WriteLine();
+
+            Observer? observer = observers.ElementAtOrDefault(0);
+            if (observer != null)
+            {
+                weatherData.RemoveObserver(observer);
+            }
+            weatherData.SetMeasurements(25, 40, 29.2f);
         }
     }
 }
