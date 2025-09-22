@@ -7,21 +7,28 @@ using DecoratorPattern.Beverages;
 
 namespace DecoratorPattern.Condiments
 {
-    internal class WhiteChocolate : CondimentDecorator
+    internal class WhiteChocolate : DecoratorCondiment
     {
-        public WhiteChocolate(Beverage beverage)
-        {
-            this.baseBeverage = beverage;
-        }
+        public WhiteChocolate(Beverage beverage) : base(beverage) { }
 
-        public override double cost()
+		public override double Cost()
         {
-            return 0.40 + baseBeverage!.cost();
-        }
+            switch (Size)
+            {
+                case Size.Tall:
+                    return 0.70 + baseBeverage.Cost();
+                case Size.Grande:
+                    return 1.10 + baseBeverage.Cost();
+                case Size.Vendi:
+                    return 1.50 + baseBeverage.Cost();
+                default:
+                    throw new ArgumentException("Invalid size");
+			}
+		}
 
         public override string GetDescription()
         {
-            return baseBeverage!.GetDescription() + ", White Chocolate";
+            return baseBeverage.GetDescription() + ", White Chocolate";
         }
     }
 }

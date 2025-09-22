@@ -7,9 +7,9 @@ using DecoratorPattern.Beverages;
 
 namespace DecoratorPattern.Condiments
 {
-    internal class Lemon : DecoratorCondiment
+    internal class WaterCondiment : DecoratorCondiment
     {
-        public Lemon(Beverage beverage) : base(beverage) { }
+        public WaterCondiment(Beverage beverage) : base(beverage) { }
 
         public override double Cost()
         {
@@ -23,12 +23,12 @@ namespace DecoratorPattern.Condiments
                     return 0.20 + baseBeverage.Cost();
                 default:
                     throw new ArgumentException("Invalid size");
-			}
-		}
+            }
+        }
 
         public override string GetDescription()
         {
-            return baseBeverage.GetDescription() + ", Lemon";
+            return baseBeverage.GetDescription() + ", Water";
         }
     }
 }

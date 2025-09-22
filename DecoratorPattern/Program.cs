@@ -13,12 +13,12 @@ namespace DecoratorPattern
 
             //Doppio	Espresso	Espresso
             Beverage doppio = new Espresso();
-            doppio = new Espresso(doppio);
+            doppio = new EspressoCondiment(doppio);
             PrintBeverage(doppio);
 
             //Lungo	Espresso	Water	
             Beverage lungo = new Espresso();
-            lungo = new Water(lungo);
+            lungo = new WaterCondiment(lungo);
             PrintBeverage(lungo);
 
             //Macchiato	Espresso	Milk Foam	
@@ -27,14 +27,14 @@ namespace DecoratorPattern
             PrintBeverage(macchiato);
 
             //Corretta	Espresso	Liqour	
-            Beverage Corretta = new Espresso();
-            Corretta = new Liqour(Corretta);
-            PrintBeverage(Corretta);
+            Beverage corretta = new Espresso();
+            corretta = new Liquor(corretta);
+            PrintBeverage(corretta);
 
             //Con Panna	Espresso	Whip
-            Beverage ConPanna = new Espresso();
-            ConPanna = new Whip(ConPanna);
-            PrintBeverage(ConPanna);
+            Beverage conPanna = new Espresso();
+            conPanna = new Whip(conPanna);
+            PrintBeverage(conPanna);
 
             //Cappucinno	Espresso	Steamed Milk	Milk Foam	
             Beverage cappucinno = new Espresso();
@@ -43,8 +43,8 @@ namespace DecoratorPattern
 
             //Americano	Espresso	Water	Water	
             Beverage americano = new Espresso();
-            americano = new Water(americano);
-            americano = new Water(americano);
+            americano = new WaterCondiment(americano);
+            americano = new WaterCondiment(americano);
             PrintBeverage(americano);
 
             //Caffé Latte	Espresso	Steamed Milk	Steamed Milk	Milk Foam	
@@ -67,13 +67,13 @@ namespace DecoratorPattern
 
             //Morocchino	Espresso	Chocolate	Milk Foam
             Beverage morocchino = new Espresso();
-            morocchino = new Chocolate(morocchino);
+            morocchino = new ChocolateCondiment(morocchino);
             morocchino = new MilkFoam(morocchino);
             PrintBeverage(morocchino);
 
             //Mocha	Espresso	Chocolate	Steamed Milk	Whip	
             Beverage mocha = new Espresso();
-            mocha = new Chocolate(mocha);
+            mocha = new ChocolateCondiment(mocha);
             mocha = new SteamedMilk(mocha);
             mocha = new Whip(mocha);
             PrintBeverage(mocha);
@@ -104,88 +104,100 @@ namespace DecoratorPattern
             PrintBeverage(meadraf);
 
             //Galao	Espresso	Milk Foam	Milk Foam	
-            Beverage Galao = new Espresso();
-            Galao = new MilkFoam(Galao);
-            Galao = new MilkFoam(Galao);
-            PrintBeverage(Galao);
+            Beverage galao = new Espresso();
+            galao = new MilkFoam(galao);
+            galao = new MilkFoam(galao);
+            PrintBeverage(galao);
 
             //Caffé affogato	Espresso	Espresso	Ice cream	
             Beverage caffeAffogato = new Espresso();
-            caffeAffogato = new Espresso(caffeAffogato);
+            caffeAffogato = new EspressoCondiment(caffeAffogato);
             caffeAffogato = new IceCream(caffeAffogato);
             PrintBeverage(caffeAffogato);
 
             //Vienna coffee	Espresso	Espresso	Whip	Whip
-            Beverage Vienna = new Espresso();
-            Vienna = new Espresso(Vienna);
-            Vienna = new Whip(Vienna);
-            Vienna = new Whip(Vienna);
-            PrintBeverage(Vienna);
+            Beverage vienna = new Espresso();
+            vienna = new EspressoCondiment(vienna);
+            vienna = new Whip(vienna);
+            vienna = new Whip(vienna);
+            PrintBeverage(vienna);
 
             //Glace	Espresso	Ice cream
-            Beverage Glace = new Espresso();
-            Glace = new IceCream(Glace);
-            PrintBeverage(Glace);
+            Beverage glace = new Espresso();
+            glace = new IceCream(glace);
+            PrintBeverage(glace);
 
             //Chocolate milk	Chocolate	Milk	Milk
-            Beverage ChocolateMilk = new Chocolate();
-            ChocolateMilk = new Milk(ChocolateMilk);
-            ChocolateMilk = new Milk(ChocolateMilk);
-            PrintBeverage(ChocolateMilk);
+            Beverage chocolateMilk = new Chocolate();
+            chocolateMilk = new Milk(chocolateMilk);
+            chocolateMilk = new Milk(chocolateMilk);
+            PrintBeverage(chocolateMilk);
 
             //Demi – créme	Espresso	Espresso	Cream	Cream
-            Beverage DemiCreme = new Espresso();
-            DemiCreme = new Espresso(DemiCreme);
-            DemiCreme = new Cream(DemiCreme);
-            DemiCreme = new Cream(DemiCreme);
-            PrintBeverage(DemiCreme);
+            Beverage demiCreme = new Espresso();
+            demiCreme = new EspressoCondiment(demiCreme);
+            demiCreme = new Cream(demiCreme);
+            demiCreme = new Cream(demiCreme);
+            PrintBeverage(demiCreme);
 
             //Latte macchiato	Espresso	Steamed Milk	Steamed Milk	Milk Foam
-            Beverage LatteMacchiato = new Espresso();
-            LatteMacchiato = new SteamedMilk(LatteMacchiato);
-            LatteMacchiato = new SteamedMilk(LatteMacchiato);
-            LatteMacchiato = new MilkFoam(LatteMacchiato);
-            PrintBeverage(LatteMacchiato);
+            Beverage latteMacchiato = new Espresso();
+            latteMacchiato = new SteamedMilk(latteMacchiato);
+            latteMacchiato = new SteamedMilk(latteMacchiato);
+            latteMacchiato = new MilkFoam(latteMacchiato);
+            PrintBeverage(latteMacchiato);
 
             //Freddo	Espresso	Liqour	Ice	
-            Beverage Freddo = new Espresso();
-            Freddo = new Liqour(Freddo);
-            Freddo = new Ice(Freddo);
-            PrintBeverage(Freddo);
+            Beverage freddo = new Espresso();
+            freddo = new Liquor(freddo);
+            freddo = new Ice(freddo);
+            PrintBeverage(freddo);
 
             //Frappuccino	Espresso	Ice	Steamed Milk	Whip
-            Beverage Frappuccino = new Espresso();
-            Frappuccino = new Ice(Frappuccino);
-            Frappuccino = new SteamedMilk(Frappuccino);
-            Frappuccino = new Whip(Frappuccino);
-            PrintBeverage(Frappuccino);
+            Beverage frappuccino = new Espresso();
+            frappuccino = new Ice(frappuccino);
+            frappuccino = new SteamedMilk(frappuccino);
+            frappuccino = new Whip(frappuccino);
+            PrintBeverage(frappuccino);
 
             //Caramel frappuccino	Espresso	Ice	Steamed Milk	Cream	Syrup
-            Beverage CaramelFrappuccino = new Espresso();
-            CaramelFrappuccino = new Ice(CaramelFrappuccino);
-            CaramelFrappuccino = new SteamedMilk(CaramelFrappuccino);
-            CaramelFrappuccino = new Cream(CaramelFrappuccino);
-            CaramelFrappuccino = new Syrup(CaramelFrappuccino);
-            PrintBeverage(CaramelFrappuccino);
+            Beverage caramelFrappuccino = new Espresso();
+            caramelFrappuccino = new Ice(caramelFrappuccino);
+            caramelFrappuccino = new SteamedMilk(caramelFrappuccino);
+            caramelFrappuccino = new Cream(caramelFrappuccino);
+            caramelFrappuccino = new Syrup(caramelFrappuccino);
+            PrintBeverage(caramelFrappuccino);
 
             //Frappe	Espresso	Steamed Milk	Steamed Milk	Ice cream	
-            Beverage Frappe = new Espresso();
-            Frappe = new SteamedMilk(Frappe);
-            Frappe = new SteamedMilk(Frappe);
-            Frappe = new IceCream(Frappe);
-            PrintBeverage(Frappe);
+            Beverage frappe = new Espresso();
+            frappe = new SteamedMilk(frappe);
+            frappe = new SteamedMilk(frappe);
+            frappe = new IceCream(frappe);
+            PrintBeverage(frappe);
 
             //Irish Coffee	Espresso	Espresso	Whiskey	Whip	
-            Beverage IrishCoffee = new Espresso();
-            IrishCoffee = new Espresso(IrishCoffee);
-            IrishCoffee = new Whiskey(IrishCoffee);
-            IrishCoffee = new Whip(IrishCoffee);
-            PrintBeverage(IrishCoffee);
+            Beverage irishCoffee = new Espresso();
+            irishCoffee = new EspressoCondiment(irishCoffee);
+            irishCoffee = new Whiskey(irishCoffee);
+            irishCoffee = new Whip(irishCoffee);
+            PrintBeverage(irishCoffee);
+
+            Beverage largeIrishCoffee = new Espresso(Size.Vendi);
+            largeIrishCoffee = new EspressoCondiment(largeIrishCoffee);
+            largeIrishCoffee = new Whiskey(largeIrishCoffee);
+            largeIrishCoffee = new Whip(largeIrishCoffee);
+            PrintBeverage(largeIrishCoffee);
+
+            Beverage smallIrishCoffee = new Espresso(Size.Tall);
+            smallIrishCoffee = new EspressoCondiment(smallIrishCoffee);
+            smallIrishCoffee = new Whiskey(smallIrishCoffee);
+            smallIrishCoffee = new Whip(smallIrishCoffee);
+            PrintBeverage(smallIrishCoffee);
         }
 
         static void PrintBeverage(Beverage beverage)
         {
-            Console.WriteLine(beverage.GetDescription() + " $" +  beverage.cost().ToString("#.##"));
+            Console.WriteLine(beverage.GetDescription() + " $" +  beverage.Cost().ToString("#.##"));
         }
     }
 }

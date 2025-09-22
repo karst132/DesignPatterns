@@ -7,28 +7,27 @@ using DecoratorPattern.Beverages;
 
 namespace DecoratorPattern.Condiments
 {
-    internal class Lemon : DecoratorCondiment
+    internal class ChocolateCondiment : DecoratorCondiment
     {
-        public Lemon(Beverage beverage) : base(beverage) { }
+        public ChocolateCondiment(Beverage beverage) : base(beverage) { }
 
         public override double Cost()
         {
             switch (Size)
             {
                 case Size.Tall:
-                    return 0.10 + baseBeverage.Cost();
+                    return 0.50 + baseBeverage.Cost();
                 case Size.Grande:
-                    return 0.15 + baseBeverage.Cost();
+                    return 0.70 + baseBeverage.Cost();
                 case Size.Vendi:
-                    return 0.20 + baseBeverage.Cost();
+                    return 0.90 + baseBeverage.Cost();
                 default:
                     throw new ArgumentException("Invalid size");
-			}
-		}
-
+            }
+        }
         public override string GetDescription()
         {
-            return baseBeverage.GetDescription() + ", Lemon";
+            return baseBeverage.GetDescription() + ", Chocolate";
         }
     }
 }

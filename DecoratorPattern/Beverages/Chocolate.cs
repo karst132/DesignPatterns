@@ -9,29 +9,27 @@ namespace DecoratorPattern.Beverages
 {
     internal class Chocolate : Beverage
     {
-        public Chocolate(Beverage? beverage = null)
+        public Chocolate() : this(Size.Grande) { }
+
+        public Chocolate(Size size)
         {
+            Size = size;
             description = "Chocolate";
-            this.baseBeverage = beverage;
-
         }
 
-        public override string GetDescription()
+        public override double Cost()
         {
-            if (baseBeverage != null)
+            switch (Size)
             {
-                return baseBeverage.GetDescription() + ", " + description;
+                case Size.Tall:
+                    return 1.49;
+                case Size.Grande:
+                    return 2.99;
+                case Size.Vendi:
+                    return 2.49;
+                default:
+                    throw new ArgumentException("Invalid size");
             }
-            return description;
-        }
-
-        public override double cost()
-        {
-            if (baseBeverage != null)
-            {
-                return 1.49 + baseBeverage.cost();
-            }
-            return 1.49;
         }
     }
 }

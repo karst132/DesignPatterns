@@ -8,24 +8,33 @@ namespace DecoratorPattern.Beverages
 {
     enum Size
     {
-        TALL,
-        GRANDE,
-        VENDI
+        /// <summary>
+        /// small
+        /// </summary>
+        Tall,
+
+        /// <summary>
+        /// medium
+        /// </summary>
+        Grande,
+
+        /// <summary>
+        /// large
+        /// </summary>
+        Vendi 
     }
 
     internal abstract class Beverage
     {
-        public Size Size { get { return size; } set { size = value; } }
-        private Size size;
+        public Size Size { get; set; }
 
-        protected string description = "Unknown";
-        protected Beverage? baseBeverage = null;
+        protected string description = string.Empty;
 
         public virtual string GetDescription()
         {
             return description;
         }
 
-        public abstract double cost();
+        public abstract double Cost();
     }
 }

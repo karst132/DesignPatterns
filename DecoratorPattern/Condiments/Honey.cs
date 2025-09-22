@@ -7,21 +7,28 @@ using DecoratorPattern.Beverages;
 
 namespace DecoratorPattern.Condiments
 {
-    internal class Honey : CondimentDecorator
+    internal class Honey : DecoratorCondiment
     {
-        public Honey(Beverage beverage)
-        {
-            this.baseBeverage = beverage;
-        }
+        public Honey(Beverage beverage) : base(beverage) { }
 
-        public override double cost()
+        public override double Cost()
         {
-            return 0.25 + baseBeverage!.cost();
+            switch (Size)
+            {
+                case Size.Tall:
+                    return 0.20 + baseBeverage.Cost();
+                case Size.Grande:
+                    return 0.30 + baseBeverage.Cost();
+                case Size.Vendi:
+                    return 0.40 + baseBeverage.Cost();
+                default:
+                    throw new ArgumentException("Invalid size");
+            }
         }
 
         public override string GetDescription()
         {
-            return baseBeverage!.GetDescription() + ", Honey";
+            return baseBeverage.GetDescription() + ", Honey";
         }
     }
 }

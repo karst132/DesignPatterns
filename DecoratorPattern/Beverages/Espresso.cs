@@ -8,27 +8,27 @@ namespace DecoratorPattern.Beverages
 {
     internal class Espresso : Beverage
     {
-        public Espresso(Beverage? beverage = null)
+        public Espresso() : this(Size.Grande) { }
+
+        public Espresso(Size size)
         {
+            Size = size;
             description = "Espresso";
-            this.baseBeverage = beverage;
-        
         }
-        public override string GetDescription()
+
+        public override double Cost()
         {
-            if (baseBeverage != null)
+            switch (Size)
             {
-                return baseBeverage.GetDescription() + ", " + description;
+                case Size.Tall:
+                    return 1.99;
+                case Size.Grande:
+                    return 2.99;
+                case Size.Vendi:
+                    return 3.99;
+                default:
+                    throw new ArgumentException("Invalid size");
             }
-            return description;
-        }
-        public override double cost()
-        {
-            if (baseBeverage != null)
-            {
-                return 1.99 + baseBeverage.cost();
-            }
-            return 1.99;
         }
     }
 }

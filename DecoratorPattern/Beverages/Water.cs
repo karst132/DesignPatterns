@@ -8,27 +8,27 @@ namespace DecoratorPattern.Beverages
 {
     internal class Water : Beverage
     {
-        public Water(Beverage? beverage = null)
+        public Water() : this(Size.Grande) { }
+
+        public Water(Size size)
         {
+            Size = size;
             description = "Water";
-            this.baseBeverage = beverage;
         }
 
-        public override string GetDescription()
+        public override double Cost()
         {
-            if (baseBeverage != null)
+            switch (Size)
             {
-                return baseBeverage.GetDescription() + ", " + description;
+                case Size.Tall:
+                    return 0.49;
+                case Size.Grande:
+                    return 0.74;
+                case Size.Vendi:
+                    return 0.99;
+                default:
+                    throw new ArgumentException("Invalid size");
             }
-            return description;
-        }
-        public override double cost()
-        {
-            if (baseBeverage != null)
-            {
-                return 0.50 + baseBeverage.cost();
-            }
-            return 0.50;
         }
     }
 }
