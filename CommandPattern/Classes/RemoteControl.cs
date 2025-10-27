@@ -12,7 +12,7 @@ namespace CommandPattern.Classes
     {
         Command[] onCommands = new Command[7];
         Command[] offCommands = new Command[7];
-        List<Command> undoCommands = new List<Command>();
+        Stack<Command> undoCommands = new Stack<Command>();
         public RemoteControl()
         {
             for (int i = 0; i < onCommands.Length; i++)
@@ -33,15 +33,14 @@ namespace CommandPattern.Classes
         public void OnButtonWasPushed(int slot)
         {
             onCommands[slot].Execute();
-            undoCommands.Add(onCommands[slot]);
+            undoCommands.Push(onCommands[slot]);
         }
 
         // This method must call the OffCommand.Execute() method of the slot provided
         public void OffButtonWasPushed(int slot)
         {
             offCommands[slot].Execute();
-            undoCommands.Add(offCommands[slot]);
-            
+            undoCommands.Push(offCommands[slot]);
         }
 
         public void UndoButtonWasPushed()
@@ -49,8 +48,7 @@ namespace CommandPattern.Classes
             int indexLastUndo = undoCommands.Count - 1;
             if (indexLastUndo >= 0)
             {
-                undoCommands[indexLastUndo].Undo();
-                undoCommands.RemoveAt(indexLastUndo);
+                undoCommands.Pop().Undo();
             }
         }
 
