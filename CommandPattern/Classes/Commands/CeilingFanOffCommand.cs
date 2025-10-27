@@ -25,22 +25,36 @@ namespace CommandPattern.Classes.Commands
 
         public void Undo()
         {
-            if (prevSpeed == ceilingFan.HIGH)
-            {
-                ceilingFan.High();
-            }
-            else if (prevSpeed == ceilingFan.MEDIUM)
-            {
-                ceilingFan.Medium();
-            }
-            else if (prevSpeed == ceilingFan.LOW)
-            {
-                ceilingFan.Low();
-            }
-            else if (prevSpeed == ceilingFan.OFF)
+            TrySetSpeedCeilingFan(prevSpeed);
+        }
+
+        private bool TrySetSpeedCeilingFan(int ceilingFanSpeed)
+        {
+            if (ceilingFanSpeed == ceilingFan.OFF)
             {
                 ceilingFan.Off();
+                return true;
             }
+
+            if (ceilingFanSpeed == ceilingFan.LOW)
+            {
+                ceilingFan.Low();
+                return true;
+            }
+
+            if (ceilingFanSpeed == ceilingFan.MEDIUM)
+            {
+                ceilingFan.Medium();
+                return true;
+            }
+
+            if (ceilingFanSpeed == ceilingFan.HIGH)
+            {
+                ceilingFan.High();
+                return true;
+            }
+
+            return false;
         }
     }
 }
